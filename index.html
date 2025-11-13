@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SCANTIC YouTube Channel Overview</title>
+  <style>
+    
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 8px 24px rgba(255, 64, 129, 0.3); }
+            50% { box-shadow: 0 8px 32px rgba(255, 64, 129, 0.6); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(-45deg, #121212, #1a1a2e, #16213e, #0f3460);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            color: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            gap: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        .sections-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 1240px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        @media (max-width: 768px) {
+            .sections-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 64, 129, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(121, 121, 198, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        body > * {
+            position: relative;
+            z-index: 1;
+        }
+        .container {
+            background: #1e1e1e;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+            max-width: 100%;
+            width: 100%;
+            padding: 30px;
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 32px rgba(255, 64, 129, 0.4);
+        }
+        h1 {
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 0.2em;
+            color: #ff4081;
+            animation: fadeInUp 1s ease-out;
+            text-shadow: 0 0 20px rgba(255, 64, 129, 0.5);
+            transition: text-shadow 0.3s ease;
+        }
+        h1:hover {
+            text-shadow: 0 0 30px rgba(255, 64, 129, 0.8);
+        }
+        a.channel-link {
+            display: inline-block;
+            margin: 15px 0 25px;
+            font-size: 1.1rem;
+            color: #ff79c6;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+        a.channel-link:hover {
+            border-color: #ff4081;
+        }
+        p.description {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 30px;
+            color: #cfcfcf;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+        }
+        .stat {
+            background: #292929;
+            border-radius: 10px;
+            padding: 20px 25px;
+            flex: 1;
+            box-shadow: inset 0 0 10px #000000;
+            animation: fadeInUp 1.2s ease-out;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .stat:nth-child(1) { animation-delay: 0.1s; }
+        .stat:nth-child(2) { animation-delay: 0.2s; }
+        .stat:nth-child(3) { animation-delay: 0.3s; }
+        .stat:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: inset 0 0 10px #000000, 0 8px 20px rgba(255, 64, 129, 0.3);
+        }
+        .stat h2 {
+            margin: 0 0 10px;
+            font-size: 1.5rem;
+            color: #ff79c6;
+        }
+        .stat p {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #e0e0e0;
+        }
+        footer {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .scantic-div {
+            background-color: #121212;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+            max-width: 100%;
+            width: 100%;
+            min-height: 59vh;
+            padding-top: 15px;
+            padding-bottom: 30px;
+            padding-left: 30px;
+            padding-right: 30px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .scantic-div h1 {   
+            margin-top: 0;
+        }
+        .button67{
+      background: linear-gradient(135deg, #303030, #404040);
+      border-radius: 8px;
+      padding: 12px 24px;
+      color: #e0e0e0;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      animation: pulse 2s infinite;
+        }
+        .button67::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 64, 129, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        .button67:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        .button67:hover {
+            background: linear-gradient(135deg, #ff4081, #ff79c6);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 64, 129, 0.6);
+        }
+        .button67:active {
+            transform: scale(0.95);
+        }
+        .nav-div {
+            background: #1e1e1e;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+            max-width: 1240px;
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: space-around;
+            gap: 10px;
+            animation: slideInLeft 0.8s ease-out;
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+        }
+        .nav-div a {
+            color: #ff79c6;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .nav-div a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #ff4081;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        .nav-div a:hover::after {
+            width: 80%;
+        }
+        .nav-div a:hover {
+            background-color: #292929;
+            transform: translateY(-2px);
+            color: #ff4081;
+        }
+        .featured-div {
+            background: #1e1e1e;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+            max-width: 100%;
+            width: 100%;
+            padding: 30px;
+            text-align: center;
+        }
+        .featured-div h2 {
+            color: #ff4081;
+            margin-bottom: 20px;
+        }
+        .video-item {
+            background: #292929;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            text-align: left;
+            animation: fadeInUp 0.8s ease-out;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .video-item:nth-child(1) { animation-delay: 0.1s; }
+        .video-item:nth-child(2) { animation-delay: 0.2s; }
+        .video-item:nth-child(3) { animation-delay: 0.3s; }
+        .video-item:hover {
+            transform: translateX(10px);
+            background: #333333;
+            box-shadow: 0 4px 15px rgba(255, 64, 129, 0.3);
+        }
+        .social-div {
+            background: #1e1e1e;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+            max-width: 100%;
+            width: 100%;
+            padding: 30px;
+            text-align: center;
+        }
+        .social-div h2 {
+            color: #ff4081;
+            margin-bottom: 20px;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .social-links a {
+            color: #ff79c6;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: #292929;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 64, 129, 0.3), transparent);
+            transition: left 0.5s;
+        }
+        .social-links a:hover::before {
+            left: 100%;
+        }
+        .social-links a:hover {
+            background-color: #404040;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 64, 129, 0.4);
+        }
+        .activity-div {
+            background: #1e1e1e;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+            max-width: 100%;
+            width: 100%;
+            padding: 30px;
+            text-align: center;
+        }
+        .activity-div h2 {
+            color: #ff4081;
+            margin-bottom: 20px;
+        }
+        .activity-item {
+            background: #292929;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            animation: slideInRight 0.8s ease-out;
+            transition: all 0.3s ease;
+        }
+        .activity-item:nth-child(1) { animation-delay: 0.1s; }
+        .activity-item:nth-child(2) { animation-delay: 0.2s; }
+        .activity-item:nth-child(3) { animation-delay: 0.3s; }
+        .activity-item:hover {
+            transform: translateX(-10px);
+            background: #333333;
+            box-shadow: 0 4px 15px rgba(121, 121, 198, 0.3);
+        }
+        .community-div {
+            background: #1e1e1e;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+            max-width: 100%;
+            width: 100%;
+            padding: 30px;
+            text-align: center;
+        }
+        .community-div h2 {
+            color: #ff4081;
+            margin-bottom: 20px;
+        }
+        .gallery-div {
+            background: #1e1e1e;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+            max-width: 100%;
+            width: 100%;
+            padding: 30px;
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+        .gallery-div h2 {
+            color: #ff4081;
+            margin-bottom: 20px;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .gallery-item {
+            background: #292929;
+            border-radius: 8px;
+            padding: 20px;
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(255, 64, 129, 0.3) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+        }
+        .gallery-item:hover::before {
+            width: 200px;
+            height: 200px;
+        }
+        .gallery-item:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 8px 20px rgba(255, 64, 129, 0.5);
+        }
+        .schedule-div {
+            background: #1e1e1e;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+            max-width: 100%;
+            width: 100%;
+            padding: 30px;
+            text-align: center;
+            animation: fadeInUp 1.1s ease-out;
+        }
+        .schedule-div h2 {
+            color: #ff4081;
+            margin-bottom: 20px;
+        }
+        .schedule-item {
+            background: #292929;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        .schedule-item:hover {
+            transform: scale(1.05);
+            background: #333333;
+            box-shadow: 0 4px 15px rgba(255, 64, 129, 0.3);
+        }
+        .about-div {
+            background: #1e1e1e;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+            max-width: 100%;
+            width: 100%;
+            padding: 30px;
+            text-align: center;
+            animation: fadeInUp 1.2s ease-out;
+        }
+        .about-div h2 {
+            color: #ff4081;
+            margin-bottom: 20px;
+        }
+        .testimonial-div {
+            background: #1e1e1e;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+            max-width: 100%;
+            width: 100%;
+            padding: 30px;
+            text-align: center;
+            animation: fadeInUp 1.3s ease-out;
+        }
+        .testimonial-div h2 {
+            color: #ff4081;
+            margin-bottom: 20px;
+        }
+        .testimonial-item {
+            background: #292929;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            border-left: 4px solid #ff4081;
+            text-align: left;
+            transition: all 0.3s ease;
+            animation: float 3s ease-in-out infinite;
+        }
+        .testimonial-item:nth-child(even) {
+            animation-delay: 1.5s;
+        }
+        .testimonial-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(255, 64, 129, 0.4);
+        }
+        .stats-div {
+            background: #1e1e1e;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+            max-width: 100%;
+            width: 100%;
+            padding: 30px;
+            text-align: center;
+            animation: fadeInUp 1.4s ease-out;
+        }
+        .stats-div h2 {
+            color: #ff4081;
+            margin-bottom: 20px;
+        }
+        .stat-card {
+            background: linear-gradient(135deg, #292929, #333333);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px 0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .stat-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 64, 129, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s;
+        }
+        .stat-card:hover::after {
+            top: 150%;
+            right: 150%;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 64, 129, 0.4);
+        }
+        .featured-div, .social-div, .activity-div, .community-div, .gallery-div, .schedule-div, .about-div, .testimonial-div, .stats-div {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .featured-div:hover, .social-div:hover, .activity-div:hover, .community-div:hover, .gallery-div:hover, .schedule-div:hover, .about-div:hover, .testimonial-div:hover, .stats-div:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 32px rgba(255, 64, 129, 0.4);
+        }
+        .collab-div {
+            background: linear-gradient(135deg, #1e1e1e, #2d1b4e, #1e1e1e);
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.6), 0 0 40px rgba(255, 64, 129, 0.3);
+            max-width: 100%;
+            width: 100%;
+            padding: 40px 30px;
+            text-align: center;
+            animation: fadeInUp 1.5s ease-out, glow 3s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(255, 64, 129, 0.3);
+        }
+        .collab-div::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 64, 129, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        .collab-div > * {
+            position: relative;
+            z-index: 1;
+        }
+        .collab-div h2 {
+            color: #ff4081;
+            margin-bottom: 15px;
+            font-size: 2.5rem;
+            text-shadow: 0 0 20px rgba(255, 64, 129, 0.8);
+            animation: pulse 2s infinite;
+        }
+        .collab-div .collab-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ff79c6;
+            margin: 20px 0;
+            text-shadow: 0 0 15px rgba(255, 121, 198, 0.6);
+        }
+        .collab-div .collab-text a {
+            color: #ff79c6;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-block;
+        }
+        .collab-div .collab-text a:hover {
+            color: #ff4081;
+            text-shadow: 0 0 25px rgba(255, 64, 129, 1);
+            transform: scale(1.1);
+        }
+        .collab-div .collab-text a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ff4081;
+            transition: width 0.3s ease;
+        }
+        .collab-div .collab-text a:hover::after {
+            width: 100%;
+        }
+        .collab-div .coming-soon {
+            font-size: 1.3rem;
+            color: #e0e0e0;
+            margin-top: 15px;
+            font-style: italic;
+            animation: fadeIn 2s ease-in-out infinite alternate;
+        }
+        .collab-div .collab-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff4081, #ff79c6);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #fff;
+            margin-top: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 15px rgba(255, 64, 129, 0.5);
+            animation: float 3s ease-in-out infinite;
+        }
+   
+  </style>
+</head>
+<body>
+  <div class="nav-div">
+    <a href="#home">Home</a>
+    <a href="#content">Content</a>
+    <a href="#featured">Featured</a>
+    <a href="#social">Social</a>
+    <a href="#community">Community</a>
+  </div>
+  
+  <div id="home" class="container" style="max-width: 1240px; grid-column: 1 / -1;">
+    <h1>SCANTIC</h1>
+    <a href="https://youtube.com/@scantic-f3c?si=eEVObiLtOKYuBW4v" target="_blank" rel="noopener noreferrer" class="channel-link">Visit SCANTIC on YouTube</a>
+    <p class="description">Welcome to the overview of the SCANTIC YouTube channel. SCANTIC creates engaging gaming and entertainment content, including videos and Shorts. For the latest videos and updates, visit the channel directly.</p>
+    <div class="stats">
+      <div class="stat">
+        <h2>Videos</h2>
+        <p>Number varies - check channel</p>
+      </div>
+      <div class="stat">
+        <h2>Shorts</h2>
+        <p>Included in total videos</p>
+      </div>
+      <div class="stat">
+        <h2>Subscribers</h2>
+        <p id="subscribers">Loading...</p>
+      </div>
+    </div>
+    <footer>© 2024 SCANTIC Channel Overview</footer>
+  </div>
+
+  <div class="collab-div" style="max-width: 1240px; grid-column: 1 / -1;">
+    <h2>🎮 COLLABORATION ANNOUNCEMENT 🎮</h2>
+    <div class="collab-text">
+      <a href="https://youtube.com/@scantic-f3c?si=eEVObiLtOKYuBW4v" target="_blank">SCANTIC</a> X 
+      <a href="https://youtube.com/@robloxnights?si=AUJCH-InpItlgUxB" target="_blank">ROBLOXNIGHTS</a>
+    </div>
+    <div class="coming-soon">Coming Soon!</div>
+    <div class="collab-badge">⚡ Epic Collab ⚡</div>
+  </div>
+  
+  <div class="sections-grid">
+    <div id="content" class="container scantic-div" label="scantic div">
+    <h1>CONTENT</h1>
+      <a href="https://www.youtube.com/live/H5f1d_zLXQk?si=yMKRd7IolU8Zxfgy" target="_blank">
+    <button class="button67">Scantics live stream</button>
+      </a>
+    </div>
+
+    <div id="featured" class="featured-div">
+      <h2>Featured Videos</h2>
+      <a href="https://youtu.be/9wB4pFR5oyI?si=D34m9aY1agkctLgp" target="_blank" style="text-decoration: none; color: inherit;">
+        <div class="video-item">
+          <h3>Latest Upload</h3>
+          <p>Check out the most recent content from SCANTIC</p>
+        </div>
+      </a>
+      <a href="https://www.youtube.com/@scantic-f3c/videos" target="_blank" style="text-decoration: none; color: inherit;">
+        <div class="video-item">
+          <h3>Popular Content</h3>
+          <p>Most viewed videos and shorts</p>
+        </div>
+      </a>
+      <a href="https://www.youtube.com/@scantic-f3c/videos" target="_blank" style="text-decoration: none; color: inherit;">
+        <div class="video-item">
+          <h3>Gaming Highlights</h3>
+          <p>Best moments from gaming sessions</p>
+        </div>
+      </a>
+    </div>
+
+    <div id="social" class="social-div">
+      <h2>Connect With SCANTIC</h2>
+      <div class="social-links">
+        <a href="https://youtube.com/@scantic-f3c?si=eEVObiLtOKYuBW4v" target="_blank">YouTube</a>
+        <a href="https://twitter.com/JohnSamuelAtef1" target="_blank">Twitter</a>
+        <a href="https://www.youtube.com/@scantic-f3c" target="_blank">Instagram</a>
+        <a href="https://discord.com/users/johngoko123" target="_blank">Discord</a>
+      </div>
+    </div>
+
+    <div class="activity-div">
+      <h2>Recent Activity</h2>
+      <a href="https://www.youtube.com/live/H5f1d_zLXQk?si=yMKRd7IolU8Zxfgy" target="_blank" style="text-decoration: none; color: inherit;">
+        <div class="activity-item">
+          <h3>Live Stream</h3>
+          <p>Currently streaming or recently streamed</p>
+        </div>
+      </a>
+      <a href="https://youtu.be/9wB4pFR5oyI?si=D34m9aY1agkctLgp" target="_blank" style="text-decoration: none; color: inherit;">
+        <div class="activity-item">
+          <h3>New Upload</h3>
+          <p>Latest video posted</p>
+        </div>
+      </a>
+      <a href="https://www.youtube.com/@scantic-f3c/community" target="_blank" style="text-decoration: none; color: inherit;">
+        <div class="activity-item">
+          <h3>Community Post</h3>
+          <p>Latest community update</p>
+        </div>
+      </a>
+    </div>
+
+    <div id="community" class="community-div">
+      <h2>Community</h2>
+      <p>Join the SCANTIC community for updates, discussions, and more!</p>
+      <div class="social-links">
+        <a href="https://discord.com/users/johngoko123" target="_blank">Join Discord</a>
+        <a href="https://twitter.com/JohnSamuelAtef1" target="_blank">Follow on Social Media</a>
+      </div>
+    </div>
+
+    <div class="gallery-div">
+      <h2>Gallery</h2>
+      <p>Check out highlights and moments from SCANTIC's content</p>
+      <div class="gallery-grid">
+        <a href="https://www.youtube.com/@scantic-f3c/videos" target="_blank" style="text-decoration: none; color: inherit;">
+          <div class="gallery-item">
+            <span>🎮</span>
+          </div>
+        </a>
+        <a href="https://www.youtube.com/@scantic-f3c/videos" target="_blank" style="text-decoration: none; color: inherit;">
+          <div class="gallery-item">
+            <span>🎬</span>
+          </div>
+        </a>
+        <a href="https://www.youtube.com/@scantic-f3c/videos" target="_blank" style="text-decoration: none; color: inherit;">
+          <div class="gallery-item">
+            <span>🎯</span>
+          </div>
+        </a>
+        <a href="https://www.youtube.com/@scantic-f3c/videos" target="_blank" style="text-decoration: none; color: inherit;">
+          <div class="gallery-item">
+            <span>⚡</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="schedule-div">
+      <h2>Streaming Schedule</h2>
+      <a href="https://www.youtube.com/@scantic-f3c" target="_blank" style="text-decoration: none; color: inherit;">
+        <div class="schedule-item" style="cursor: pointer;">
+          <span><strong>Saturday</strong></span>
+          <span>7:00 PM - 8:00 PM</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="about-div">
+      <h2>About SCANTIC</h2>
+      <p>SCANTIC is a passionate content creator focused on delivering high-quality gaming and entertainment content. With a dedication to engaging with the community and creating memorable experiences, SCANTIC continues to grow and evolve in the digital space.</p>
+      <p style="margin-top: 15px; color: #cfcfcf;">Join the journey and be part of the SCANTIC community!</p>
+    </div>
+
+    <div class="testimonial-div">
+      <h2>What Viewers Say</h2>
+      <div class="testimonial-item">
+        <p><strong>"Amazing content creator! Always entertaining and engaging."</strong></p>
+        <p style="margin-top: 10px; color: #999;">- Viewer Comment</p>
+      </div>
+      <div class="testimonial-item">
+        <p><strong>"Love the gaming streams! Keep up the great work!"</strong></p>
+        <p style="margin-top: 10px; color: #999;">- Community Member</p>
+      </div>
+      <div class="testimonial-item">
+        <p><strong>"Best channel for gaming highlights and entertainment!"</strong></p>
+        <p style="margin-top: 10px; color: #999;">- Subscriber</p>
+      </div>
+    </div>
+
+    <div class="stats-div">
+      <h2>Channel Statistics</h2>
+      <div class="stat-card">
+        <h3 style="color: #ff79c6; margin: 0 0 10px;">Total Views</h3>
+        <p style="font-size: 1.5rem; font-weight: bold; margin: 0;">Growing Daily</p>
+      </div>
+      <div class="stat-card">
+        <h3 style="color: #ff79c6; margin: 0 0 10px;">Content Quality</h3>
+        <p style="font-size: 1.5rem; font-weight: bold; margin: 0;">Premium</p>
+      </div>
+      <div class="stat-card">
+        <h3 style="color: #ff79c6; margin: 0 0 10px;">Community Engagement</h3>
+        <p style="font-size: 1.5rem; font-weight: bold; margin: 0;">Active</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const API_KEY = 'AIzaSyCkuVH9qoZ5vQxICxarTstnuH3LdTHEGeM'; // Replace with your actual API key
+    const CHANNEL_ID = 'UCBUk0i1W8ub8NM2FdkN_FfA'; // SCANTIC's channel ID
+
+    async function fetchSubscriberCount() {
+      const url = `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${CHANNEL_ID}&key=${API_KEY}`;
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        const count = data.items[0].statistics.subscriberCount;
+        document.getElementById('subscribers').textContent = `${parseInt(count).toLocaleString()} subscribers`;
+      } catch (error) {
+        console.error('Error fetching subscriber count:', error);
+        document.getElementById('subscribers').textContent = 'Unable to load';
+      }
+    }
+
+    fetchSubscriberCount();
+    setInterval(fetchSubscriberCount, 30000); // Refresh every 30 seconds
+  </script>
+</body>
+</html>
